@@ -1,103 +1,104 @@
 /**
  * Module that registers the simple room functionality
+ * 修仙版本改造：核心循环从"生火"变为"打坐修炼"
  */
 var Room = {
 	// times in (minutes * seconds * milliseconds)
-	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
-	_ROOM_WARM_DELAY: 30 * 1000, // time between room temperature updates
-	_BUILDER_STATE_DELAY: 0.5 * 60 * 1000, // time between builder state updates
-	_STOKE_COOLDOWN: 10, // cooldown to stoke the fire
+	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools → time before cultivation wanes
+	_ROOM_WARM_DELAY: 30 * 1000, // time between room temperature updates → time between state updates
+	_BUILDER_STATE_DELAY: 0.5 * 60 * 1000, // time between builder state updates → time between hermit state updates
+	_STOKE_COOLDOWN: 10, // cooldown to stoke the fire → cooldown to meditate
 	_NEED_WOOD_DELAY: 15 * 1000, // from when the stranger shows up, to when you need wood
 	buttons: {},
 	Craftables: {
 		'trap': {
-			name: _('trap'),
+			name: _('trap'),  // 捕妖阵
 			button: null,
 			maximum: 10,
-			availableMsg: _('builder says she can make traps to catch any creatures might still be alive out there'),
-			buildMsg: _('more traps to catch more creatures'),
-			maxMsg: _("more traps won't help now"),
+			availableMsg: _('builder says she can make traps to catch any creatures might still be alive out there'),  // 归隐老修说他可布下捕妖阵，捕获山中残存的妖兽
+			buildMsg: _('more traps to catch more creatures'),  // 更多捕妖阵，捕获更多妖兽
+			maxMsg: _("more traps won't help now"),  // 捕妖阵再多也无济于事
 			type: 'building',
 			cost: function () {
 				var n = $SM.get('game.buildings["trap"]', true);
 				return {
-					'wood': 10 + (n * 10)
+					'wood': 10 + (n * 10)  // 灵晶消耗
 				};
 			},
 			audio: AudioLibrary.BUILD_TRAP
 		},
 		'cart': {
-			name: _('cart'),
+			name: _('cart'),  // 运灵车
 			button: null,
 			maximum: 1,
-			availableMsg: _('builder says she can make a cart for carrying wood'),
-			buildMsg: _('the rickety cart will carry more wood from the forest'),
+			availableMsg: _('builder says she can make a cart for carrying wood'),  // 归隐老修说他可造一辆运灵车，载运采集的灵晶
+			buildMsg: _('the rickety cart will carry more wood from the forest'),  // 这辆破旧的运灵车可从荒林运回更多灵晶
 			type: 'building',
 			cost: function () {
 				return {
-					'wood': 30
+					'wood': 30  // 灵晶消耗
 				};
 			},
 			audio: AudioLibrary.BUILD_CART
 		},
 		'hut': {
-			name: _('hut'),
+			name: _('hut'),  // 茅舍
 			button: null,
 			maximum: 20,
-			availableMsg: _("builder says there are more wanderers. says they'll work, too."),
-			buildMsg: _('builder puts up a hut, out in the forest. says word will get around.'),
-			maxMsg: _('no more room for huts.'),
+			availableMsg: _("builder says there are more wanderers. says they'll work, too."),  // 归隐老修说附近还有更多流民，他们也能做工
+			buildMsg: _('builder puts up a hut, out in the forest. says word will get around.'),  // 归隐老修在林外建起一座茅舍。消息会传开的
+			maxMsg: _('no more room for huts.'),  // 已无地方安置更多茅舍
 			type: 'building',
 			cost: function () {
 				var n = $SM.get('game.buildings["hut"]', true);
 				return {
-					'wood': 100 + (n * 50)
+					'wood': 100 + (n * 50)  // 灵晶消耗
 				};
 			},
 			audio: AudioLibrary.BUILD_HUT
 		},
 		'lodge': {
-			name: _('lodge'),
+			name: _('lodge'),  // 灵兽阁
 			button: null,
 			maximum: 1,
-			availableMsg: _('villagers could help hunt, given the means'),
-			buildMsg: _('the hunting lodge stands in the forest, a ways out of town'),
+			availableMsg: _('villagers could help hunt, given the means'),  // 若有手段，弟子可协助猎杀妖兽
+			buildMsg: _('the hunting lodge stands in the forest, a ways out of town'),  // 灵兽阁矗立于林中，离聚落不远
 			type: 'building',
 			cost: function () {
 				return {
-					wood: 200,
-					fur: 10,
-					meat: 5
+					wood: 200,  // 灵晶
+					fur: 10,   // 兽甲
+					meat: 5     // 妖髓
 				};
 			},
 			audio: AudioLibrary.BUILD_LODGE
 		},
 		'trading post': {
-			name: _('trading post'),
+			name: _('trading post'),  // 贸易坊
 			button: null,
 			maximum: 1,
-			availableMsg: _("a trading post would make commerce easier"),
-			buildMsg: _("now the nomads have a place to set up shop, they might stick around a while"),
+			availableMsg: _("a trading post would make commerce easier"),  // 贸易坊会令交易更便利
+			buildMsg: _("now the nomads have a place to set up shop, they might stick around a while"),  // 如今游方商贩有了落脚之处，他们或许会多留一阵
 			type: 'building',
 			cost: function () {
 				return {
-					'wood': 400,
-					'fur': 100
+					'wood': 400,  // 灵晶
+					'fur': 100    // 兽甲
 				};
 			},
 			audio: AudioLibrary.BUILD_TRADING_POST
 		},
 		'tannery': {
-			name: _('tannery'),
+			name: _('tannery'),  // 制甲坊
 			button: null,
 			maximum: 1,
-			availableMsg: _("builder says leather could be useful. says the villagers could make it."),
-			buildMsg: _('tannery goes up quick, on the edge of the village'),
+			availableMsg: _("builder says leather could be useful. says the villagers could make it."),  // 归隐老修说兽甲大有用途。说弟子们可以制作
+			buildMsg: _('tannery goes up quick, on the edge of the village'),  // 制甲坊很快建成，立于聚落边缘
 			type: 'building',
 			cost: function () {
 				return {
-					'wood': 500,
-					'fur': 50
+					'wood': 500,  // 灵晶
+					'fur': 50     // 兽甲
 				};
 			},
 			audio: AudioLibrary.BUILD_TANNERY
@@ -511,13 +512,13 @@ var Room = {
 			$SM.set('game.builder.level', -1);
 		}
 
-		// If this is the first time playing, the fire is dead and it's freezing. 
+		// If this is first time playing, fire is dead and it's freezing.
 		// Otherwise grab past save state temp and fire level.
 		$SM.set('game.temperature', $SM.get('game.temperature.value') === undefined ? this.TempEnum.Freezing : $SM.get('game.temperature'));
 		$SM.set('game.fire', $SM.get('game.fire.value') === undefined ? this.FireEnum.Dead : $SM.get('game.fire'));
 
 		// Create the room tab
-		this.tab = Header.addLocation(_("A Dark Room"), "room", Room);
+		this.tab = Header.addLocation(_("一介凡尘"), "room", Room);  // "A Dark Room" → "一介凡尘"
 
 		// Create the Room panel
 		this.panel = $('<div>')
@@ -530,21 +531,21 @@ var Room = {
 		// Create the light button
 		new Button.Button({
 			id: 'lightButton',
-			text: _('light fire'),
+			text: _('light fire'),  // 点燃炉火
 			click: Room.lightFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
-			cost: { 'wood': 5 }
+			cost: { 'wood': 5 }  // 灵晶
 		}).appendTo('div#roomPanel');
 
 		// Create the stoke button
 		new Button.Button({
 			id: 'stokeButton',
-			text: _("stoke fire"),
+			text: _("stoke fire"),  // 打坐修炼
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
-			cost: { 'wood': 1 }
+			cost: { 'wood': 1 }  // 灵晶
 		}).appendTo('div#roomPanel');
 
 		// Create the stores container
@@ -578,7 +579,7 @@ var Room = {
 		Engine.setTimeout($SM.collectIncome, 1000);
 
 		Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
-		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));  // "修炼之火是……"
 	},
 
 	options: {}, // Nothing for now
@@ -614,11 +615,11 @@ var Room = {
 			}
 			return null;
 		},
-		Freezing: { value: 0, text: _('freezing') },
-		Cold: { value: 1, text: _('cold') },
-		Mild: { value: 2, text: _('mild') },
-		Warm: { value: 3, text: _('warm') },
-		Hot: { value: 4, text: _('hot') }
+		Freezing: { value: 0, text: _('freezing') },  // 寒冷刺骨
+		Cold: { value: 1, text: _('cold') },  // 阴寒侵体
+		Mild: { value: 2, text: _('mild') },  // 微凉
+		Warm: { value: 3, text: _('warm') },  // 温暖（护体灵光）
+		Hot: { value: 4, text: _('hot') }  // 炽热
 	},
 
 	FireEnum: {
@@ -630,15 +631,15 @@ var Room = {
 			}
 			return null;
 		},
-		Dead: { value: 0, text: _('dead') },
-		Smoldering: { value: 1, text: _('smoldering') },
-		Flickering: { value: 2, text: _('flickering') },
-		Burning: { value: 3, text: _('burning') },
-		Roaring: { value: 4, text: _('roaring') }
+		Dead: { value: 0, text: _('dead') },  // 熄灭
+		Smoldering: { value: 1, text: _('smoldering') },  // 将熄
+		Flickering: { value: 2, text: _('flickering') },  // 明灭
+		Burning: { value: 3, text: _('burning') },  // 稳定燃烧
+		Roaring: { value: 4, text: _('roaring') }  // 蓬勃燃烧
 	},
 
 	setTitle: function () {
-		var title = $SM.get('game.fire.value') < 2 ? _("A Dark Room") : _("A Firelit Room");
+		var title = $SM.get('game.fire.value') < 2 ? _("A Dark Room") : _("A Firelit Room");  // 标题仍暂用英文，通过CSS/多语言文件控制显示
 		if (Engine.activeModule == this) {
 			document.title = title;
 		}
@@ -676,7 +677,7 @@ var Room = {
 	lightFire: function () {
 		var wood = $SM.get('stores.wood');
 		if (wood < 5) {
-			Notifications.notify(Room, _("not enough wood to get the fire going"));
+			Notifications.notify(Room, _("not enough wood to get the fire going"));  // 灵晶不足以点燃炉火
 			Button.clearCooldown($('#lightButton.button'));
 			return;
 		} else if (wood > 4) {
@@ -690,7 +691,7 @@ var Room = {
 	stokeFire: function () {
 		var wood = $SM.get('stores.wood');
 		if (wood === 0) {
-			Notifications.notify(Room, _("the wood has run out"));
+			Notifications.notify(Room, _("the wood has run out"));  // 灵晶已耗尽
 			Button.clearCooldown($('#stokeButton.button'));
 			return;
 		}
@@ -757,17 +758,17 @@ var Room = {
 	},
 
 	unlockForest: function () {
-		$SM.set('stores.wood', 4);
+		$SM.set('stores.wood', 4);  // 给予初始灵晶
 		Outside.init();
-		Notifications.notify(Room, _("the wind howls outside"));
-		Notifications.notify(Room, _("the wood is running out"));
+		Notifications.notify(Room, _("the wind howls outside"));  // 山外风声呼啸
+		Notifications.notify(Room, _("the wood is running out"));  // 灵晶即将耗尽
 		Engine.event('progress', 'outside');
 	},
 
 	updateBuilderState: function () {
 		var lBuilder = $SM.get('game.builder.level');
 		if (lBuilder === 0) {
-			Notifications.notify(Room, _("a ragged stranger stumbles through the door and collapses in the corner"));
+			Notifications.notify(Room, _("a ragged stranger stumbles through the door and collapses in the corner"));  // 一衣衫褴褛的流浪者踉跄进门，瘫倒在角落
 			lBuilder = $SM.setget('game.builder.level', 1);
 			Engine.setTimeout(Room.unlockForest, Room._NEED_WOOD_DELAY);
 		}
@@ -775,10 +776,10 @@ var Room = {
 			var msg = "";
 			switch (lBuilder) {
 				case 1:
-					msg = _("the stranger shivers, and mumbles quietly. her words are unintelligible.");
+					msg = _("the stranger shivers, and mumbles quietly. her words are unintelligible.");  // 流浪者颤抖着，低声喃喃。言语难以辨识
 					break;
 				case 2:
-					msg = _("the stranger in the corner stops shivering. her breathing calms.");
+					msg = _("the stranger in the corner stops shivering. her breathing calms.");  // 角落的流浪者停止了颤抖。呼吸逐渐平稳
 					break;
 			}
 			Notifications.notify(Room, msg);

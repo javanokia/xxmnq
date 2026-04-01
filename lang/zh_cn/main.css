@@ -1,3 +1,143 @@
-.button{width: 100px !important;}
-#outsidePanel .button{width: 115px !important;}
-.eventPanel .button {width: 122px !important;}
+/* ================================================
+   一介凡尘 · 修仙视觉主题
+   色系：宣纸米白 / 朱砂红 / 水墨黑
+   ================================================ */
+
+/* 按钮宽度适配中文 */
+.button { width: 100px !important; }
+#outsidePanel .button { width: 115px !important; }
+.eventPanel .button { width: 122px !important; }
+
+/* ── 全局背景：宣纸米白 ── */
+body {
+  background-color: #f5f0e8;
+  color: #2c2016;
+}
+
+/* ── 通知面板渐变适配米白底 ── */
+div#notifyGradient {
+  background-color: #f5f0e8;
+  background: -webkit-linear-gradient(
+    rgba(245, 240, 232, 0) 0%, rgba(245, 240, 232, 1) 100%
+  );
+  background: linear-gradient(
+    rgba(245, 240, 232, 0) 0%, rgba(245, 240, 232, 1) 100%
+  );
+}
+
+/* ── 按钮：水墨边框 + 朱砂红悬停 ── */
+div.button {
+  border-color: #5a3e2b;
+  color: #2c2016;
+  background-color: transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+div.button:hover {
+  text-decoration: none;
+  background-color: #c0392b;
+  color: #f5f0e8;
+  border-color: #8b2020;
+}
+
+/* 冷却条：淡棕色 */
+div.button div.cooldown {
+  background-color: #e0d5c5;
+}
+
+/* 禁用状态 */
+div.button.disabled,
+div.button.disabled:hover {
+  border-color: #c8b89a;
+  color: #c8b89a;
+  background-color: transparent;
+}
+
+/* ── 事件面板：羊皮纸感 ── */
+.eventPanel {
+  background: #faf6ee;
+}
+
+.eventPanel:before {
+  background-color: #f5f0e8;
+  opacity: 0.75;
+}
+
+.eventPanel:after {
+  border-color: #5a3e2b;
+  box-shadow: 4px 4px 8px rgba(44, 32, 22, 0.3);
+}
+
+/* 事件标题：朱砂红 */
+.eventTitle {
+  color: #8b1a1a;
+}
+
+.eventTitle:after {
+  background-color: #faf6ee;
+}
+
+/* ── 头部导航链接：朱砂红下划线选中态 ── */
+div.headerButton {
+  border-left-color: #5a3e2b;
+  color: #2c2016;
+}
+
+div.headerButton.selected,
+div.headerButton.selected:hover {
+  color: #8b1a1a;
+  text-decoration: none;
+  border-bottom: 2px solid #8b1a1a;
+}
+
+div.headerButton:hover {
+  color: #c0392b;
+  text-decoration: none;
+}
+
+/* ── 存档提示：宣纸色底 ── */
+div#saveNotify {
+  background: #faf6ee;
+  color: #8b1a1a;
+  border: 1px solid #c8b89a;
+  padding: 2px 6px;
+}
+
+/* ── 菜单文字 ── */
+.menu { color: #5a3e2b; }
+.menu span:hover { color: #8b1a1a; text-decoration: none; }
+
+/* ── Tooltip：羊皮纸风 ── */
+div.tooltip {
+  background: #faf6ee;
+  border-color: #5a3e2b;
+  box-shadow: -1px 3px 4px rgba(44,32,22,0.25);
+  color: #2c2016;
+}
+
+/* ── 掉落菜单 ── */
+#dropMenu {
+  background: #faf6ee;
+  border-color: #5a3e2b;
+  box-shadow: -1px 3px 4px rgba(44,32,22,0.2);
+}
+
+#dropMenu:before {
+  border-bottom-color: #5a3e2b;
+}
+
+/* ── Logo描边颜色 ── */
+.logo-icon > path { stroke: #5a3e2b; }
+
+/* ── 上下箭头颜色适配 ── */
+.upBtn:before, .upManyBtn:before { border-color: transparent transparent #5a3e2b; }
+.upBtn:after,  .upManyBtn:after  { border-color: transparent transparent #f5f0e8; }
+.dnBtn:before, .dnManyBtn:before { border-color: #5a3e2b transparent transparent; }
+.dnBtn:after,  .dnManyBtn:after  { border-color: #f5f0e8 transparent transparent; }
+.upBtn.disabled:before, .upManyBtn.disabled:before { border-color: transparent transparent #c8b89a; }
+.dnBtn.disabled:before, .dnManyBtn.disabled:before { border-color: #c8b89a transparent transparent; }
+
+/* ── 字体：优先使用有笔墨感的衬线字体 ── */
+body, .tooltip {
+  font-family: "Noto Serif SC", "Source Han Serif CN", "STSong", "SimSun", "Times New Roman", serif;
+}

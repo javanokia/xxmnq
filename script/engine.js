@@ -119,7 +119,7 @@
         .addClass('menu')
         .appendTo('body');
 
-      if(typeof langs != 'undefined'){
+      if(typeof langs != 'undefined' && Object.keys(langs).length > 1){
         var customSelect = $('<span>')
           .addClass('customSelect')
           .addClass('menuBtn')

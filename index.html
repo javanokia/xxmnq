@@ -31,19 +31,10 @@
 	<script src="lang/langs.js"></script>
 	
 	<script>
-		// try to read "lang" param's from url
-		var lang = decodeURIComponent((new RegExp('[?|&]lang=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
-		// if no language requested, try to read it from local storage
-		if(!lang){
-			try {
-				lang = localStorage.lang;
-			} catch(e) {}
-		}
-		// if a language different than english requested, load all translations
-		if(lang && lang != 'en'){
-			document.write('<script src="lang/'+lang+'/strings.js"><\/script>');
-			document.write('<link rel="stylesheet" type="text/css" href="lang/'+lang+'/main.css" \/>');
-		}
+		// 《一介凡尘》仅支持简体中文，强制锁定语言
+		var lang = 'zh_cn';
+		document.write('<script src="lang/zh_cn/strings.js"><\/script>');
+		document.write('<link rel="stylesheet" type="text/css" href="lang/zh_cn/main.css" \/>');
 	</script>
 	
 	<script src="script/Button.js"></script>
@@ -71,6 +62,8 @@
   <script src="script/events/setpieces.js"></script>
   <script src="script/events/marketing.js"></script>
 	<script src="script/events/executioner.js"></script>
+	<!-- 一介凡尘：修仙专属事件 -->
+	<script src="script/events/cultivation.js"></script>
 	
 	<script type='text/javascript'>
 		var oldIE = false;
