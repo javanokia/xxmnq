@@ -895,6 +895,307 @@ _.setTranslation({
 	"the coal mine is clear of dangers": "阴火矿脉暂无异动",
 	"the path leads to an abandoned mine": "路径引向一处废弃的矿洞",
 	"a large creature lunges, muscles rippling in the torchlight": "一头庞大的妖物猛扑而来，肌肉在灵火映照下起伏翻滚",
-	"the iron mine is clear of dangers": "生铁矿脉暂无异动"
+	"the iron mine is clear of dangers": "生铁矿脉暂无异动",
 	"builder knows the strange device when she sees it. takes it for herself real quick. doesn't ask where it came from.": "老散修一眼认出那件上古奇器，迅速纳入囊中，未曾追问来历。",
+
+	// ==================== 新系统翻译（境界/Buff/法宝/探索/炼丹） ====================
+
+	// 境界系统
+	"mortal": "凡境",
+	"qi_gathering": "聚气境",
+	"foundation": "筑基境",
+	"core": "结丹境",
+	"nascent": "元婴境",
+	"tribulation": "渡劫境",
+	"ascended": "飞升境",
+
+	"realm": "境界",
+	"cultivation": "修炼",
+	"cultivate": "修炼",
+	"breakthrough": "突破",
+	"attempt breakthrough": "冲击境界",
+	"cultivation_exp": "修为",
+	"current exp": "当前修为",
+	"exp required": "所需修为",
+	"breakthrough cost": "突破消耗",
+	"success rate": "成功率",
+
+	"breakthrough success": "突破成功！",
+	"breakthrough fail": "突破失败...",
+	"not enough resources for breakthrough": "资源不足以突破",
+	"realm requirement not met": "境界未达要求",
+
+	// Buff系统
+	"buff bar": "增益状态",
+	"no active buffs": "无增益状态",
+	"buff expired": "效果消散",
+	"buff duration": "持续时间",
+	"stacks": "层",
+
+	// 法宝系统
+	"artifact": "法宝",
+	"artifacts": "法宝",
+	"weapon": "飞剑",
+	"armor": "护甲",
+	"tool": "辅助法器",
+	"equip": "装备",
+	"unequip": "卸下",
+	"repair": "修复",
+	"craft artifact": "炼制法宝",
+	"artifact damage": "法宝伤害",
+	"artifact defense": "法宝防御",
+	"durability": "耐久度",
+	"artifact broken": "法宝已损坏",
+	"insufficient materials": "材料不足",
+
+	"bone spear": "骨矛",
+	"iron sword": "铁剑",
+	"flying sword": "飞剑",
+	"ice blade": "玄冰剑",
+	"thunder blade": "天雷剑",
+	"leather armor": "皮甲",
+	"iron armor": "铁甲",
+	"golden shield": "金光盾",
+	"iron heaven armor": "玄铁甲",
+	"foundation charm": "道基护符",
+	"sack": "储物袋",
+	"storage bag": "储物戒",
+	"wind boots": "缩地符",
+	"heaven eye": "天眼符",
+	"escape scroll": "遁空符",
+	"spirit beast bag": "灵兽袋",
+
+	// 探索系统
+	"exploration": "探索",
+	"explore": "探索",
+	"exploring": "探索中...",
+	"exploration complete": "探索完成",
+	"exploration failed": "探索失败",
+	"exploration abandoned": "放弃探索",
+	"return to village": "返回营地",
+	"continue exploring": "继续探索",
+	"exploration time": "探索时间",
+	"exploration cost": "探索消耗",
+	"exploration rewards": "探索收获",
+	"region locked": "区域已锁定",
+	"requires realm": "需达到",
+
+	"abandoned mine": "废弃矿洞",
+	"spirit grass valley": "灵草谷",
+	"beast forest": "妖兽林",
+	"dark cave": "幽暗洞穴",
+	"ruined city": "废城废墟",
+	"ancient abyss": "深涧古潭",
+	"tribulation plateau": "渡劫高原",
+
+	// 炼丹系统
+	"alchemy": "炼丹",
+	"alchemy furnace": "丹炉",
+	"alchemy workshop": "炼丹坊",
+	"build furnace": "建造丹炉",
+	"add fuel": "添火",
+	"cancel crafting": "取消炼制",
+	"crafting": "炼制中",
+	"crafting complete": "炼制完成",
+	"crafting failed": "炼制失败",
+	"furnace temperature": "炉火温度",
+	"furnace fuel": "炉火燃料",
+	"furnace cold": "炉火熄灭",
+	"furnace ready": "炉火可用",
+	"recipe learned": "习得丹方",
+	"recipe not learned": "丹方未习得",
+
+	"potion": "丹药",
+	"elixir": "灵丹",
+	"pill": "丸药",
+	"use pill": "服用",
+	"pill inventory": "丹药库存",
+
+	"medicine small": "小还丹",
+	"spirit restoration": "灵气丹",
+	"healing pill": "疗伤丹",
+	"breakthrough elixir": "破境丹",
+	"thunder elixir": "天雷丹",
+	"shield charm": "护体符",
+	"escape charm": "遁空符",
+	"longevity pill": "延寿丹",
+	"sharp senses": "天眼丹",
+	"body strengthening": "强体丹",
+
+	// 天劫/渡劫
+	"tribulation": "天劫",
+	"tribulation heaven": "天劫降临",
+	"tribulation begins": "天劫开始",
+	"tribulation complete": "渡劫完成",
+	"tribulation failed": "渡劫失败",
+	"prepare for tribulation": "准备渡劫",
+	"tribulation countdown": "天劫倒计时",
+	"lightning bolt": "天雷",
+	"lightning strike": "天雷击中",
+	"shield broken": "护盾破碎",
+	"dodge": "闪避",
+	"block": "抵挡",
+	"use elixir": "使用丹药",
+
+	"thunder shields ready": "天雷丹可用",
+	"no thunder shields": "天雷丹耗尽",
+
+	// 轮回/余韵
+	"prestige": "轮回",
+	"rebirth": "转世",
+	"remnant": "前世余韵",
+	"remnant strength": "余韵强度",
+	"legacy": "传承",
+	"legacy items": "传承物品",
+	"prestige level": "轮回层数",
+
+	"spirit root": "灵根",
+	"high spirit root": "天灵根",
+	"medium spirit root": "地灵根",
+	"low spirit root": "杂灵根",
+
+	// 通用修仙术语
+	"spirit stone": "灵石",
+	"alien alloy": "天外陨铁",
+	"essence": "妖魄精",
+	"thunder essence": "天雷精华",
+
+	// ==================== 宗门系统 ====================
+	"sect": "宗门",
+	"sect level": "宗门等级",
+	"sect name": "宗门名称",
+	"sect bonus": "宗门加成",
+	"sect rank": "宗门位次",
+	"sect reputation": "宗门声望",
+	
+	// 宗门等级名称
+	"sect level 0": "散修孤庐",
+	"sect level 1": "散修营地",
+	"sect level 2": "小有所成",
+	"sect level 3": "一方修士",
+	"sect level 4": "修真门派",
+	"sect level 5": "仙道宗门",
+	"sect level 6": "飞升传承",
+	
+	// 宗门加成描述
+	"bonus basic": "基础产出",
+	"bonus 50": "+50% 资源产出",
+	"bonus 100": "+100% 资源产出",
+	"bonus 200": "+200% 资源产出",
+	"bonus 300": "+300% 资源产出",
+	"bonus 400": "+400% 资源产出",
+	"bonus 500": "+500% 资源产出",
+	
+	// 建筑名称（修仙化）
+	"hut": "弟子居",
+	"residence": "弟子居",
+	"lodge": "灵兽阁",
+	"beast hall": "灵兽阁",
+	"trading post": "藏宝阁",
+	"treasure hall": "藏宝阁",
+	"tannery": "制符殿",
+	"craft hall": "制符殿",
+	"smokehouse": "丹房",
+	"alchemy hall": "丹房",
+	"workshop": "炼器殿",
+	"forge hall": "炼器殿",
+	"steelworks": "天工坊",
+	"heavenly workshop": "天工坊",
+	"armoury": "武库",
+	"weapon vault": "武库",
+	"ruins": "遗迹入口",
+	"ancient ruins": "遗迹入口",
+	
+	// 宗门相关提示
+	"requires higher sect level": "需更高宗门等级",
+	"unlock at realm": "境界提升后解锁",
+	"sect upgrade available": "宗门可升级",
+	"member count": "弟子数量",
+	"building level": "建筑等级",
+	
+	// 宗门提示信息
+	"sect intro": "宗门等级随境界提升而增长，建筑亦随之解锁。",
+
+	// ==================== encounters.js 野外遭遇敌人（修仙化） ====================
+
+	// Tier 1：近郊妖兽
+	"A Snarling Beast": "嗜血妖兽",
+	"snarling beast": "嗜血妖兽",
+	"the snarling beast is dead": "妖兽已死",
+	"a snarling beast leaps out of the underbrush": "一头嗜血妖兽从灌木丛中猛扑而出",
+
+	"A Gaunt Man": "形销修士",
+	"gaunt man": "形销修士",
+	"the gaunt man is dead": "那人倒下了",
+	"a gaunt man approaches, a crazed look in his eye": "一名形销骨立的修士靠近，眼神疯狂",
+
+	"A Strange Bird": "异灵鸟",
+	"strange bird": "异灵鸟",
+	"the strange bird is dead": "灵鸟已亡",
+	"a strange looking bird speeds across the plains": "一只神异的灵鸟掠过荒野",
+
+	"A Two-Headed Creature": "双头妖物",
+	"two-headed creature": "双头妖物",
+	"the two creatures are dead": "双头妖物已亡",
+	"a two-headed creature appears, the smaller head trembling": "一头双首妖物现身，小些的那颗头颅在颤抖",
+
+	// Tier 2：荒野强敌
+	"A Shivering Man": "失心散修",
+	"shivering man": "失心散修",
+	"the shivering man is dead": "那人倒下了",
+	"a shivering man approaches and attacks with surprising strength": "一名颤抖的散修逼近，出手之力出乎意料",
+
+	"A Man-Eater": "食人妖",
+	"man-eater": "食人妖",
+	"the man-eater is dead": "食人妖已死",
+	"a large creature attacks, claws freshly bloodied": "一头巨型妖物发动袭击，爪上血迹未干",
+
+	"A Scavenger": "荒野拾尸者",
+	"scavenger": "拾尸者",
+	"the scavenger is dead": "拾尸者倒下了",
+	"a scavenger draws close, hoping for an easy score": "一名拾尸者靠近，盘算着轻松得手",
+
+	"A Huge Lizard": "巨型蜥蜴妖",
+	"lizard": "蜥蜴妖",
+	"the lizard is dead": "蜥蜴妖已死",
+	"the grass thrashes wildly as a huge lizard pushes through": "荒草猛烈晃动，一头巨型蜥蜴妖破草而出",
+
+	// Tier 3：深渊劲敌
+	"A Feral Terror": "荒野煞兽",
+	"feral terror": "煞兽",
+	"the feral terror is dead": "煞兽已亡",
+	"a beast, wilder than imagining, erupts out of the foliage": "一头难以想象的狂野煞兽从林间暴冲而出",
+
+	"A Soldier": "武装修士",
+	"soldier": "武装修士",
+	"the soldier is dead": "武装修士倒下了",
+	"a soldier opens fire from across the desert": "一名武装修士从荒漠对岸开铳",
+
+	"A Sniper": "暗处狙手",
+	"sniper": "狙手",
+	"the sniper is dead": "狙手倒下了",
+	"a shot rings out, from somewhere in the long grass": "一声枪响从荒草深处传来",
+
+	// ==================== 通用战斗字符串 ====================
+	"health: ": "气血：",
+	"hit chance: ": "命中：",
+	"attack speed: ": "攻速：",
+	"damage: ": "伤害：",
+	"ranged": "远程",
+	"melee": "近战",
+	"experience": "经验",
+	"fight!": "出手！",
+	"flee": "逃离",
+	"use": "使用",
+	"can't use this right now": "此刻无法使用",
+
+	// ==================== path.js 携带物资界面 ====================
+	"A Dusty Path": "尘土漫漫的小道",
+	"rucksack": "负重背囊",
+	"wagon": "载物大车",
+	"convoy": "车队",
+
+	// ==================== 标题（title）补充 ====================
+	"A Dark Room": "一介凡尘",
+	"a dark room": "一介凡尘",
 });

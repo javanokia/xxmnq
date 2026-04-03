@@ -1,0 +1,139 @@
+/**
+ * 宗门页面样式
+ */
+
+/* 路径错误，应该在 yijiefanchen 下 */
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+.sect-header {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);
+  border: 2px solid #c9a227;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.sect-icon {
+  font-size: 60rpx;
+}
+
+.sect-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sect-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #6b3e26;
+}
+
+.sect-level {
+  font-size: 26rpx;
+  color: #888;
+  margin-top: 5rpx;
+}
+
+.sect-bonus {
+  font-size: 28rpx;
+  color: #27ae60;
+  font-weight: bold;
+  margin-top: 5rpx;
+}
+
+/* 建筑网格 */
+.building-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.building-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  background-color: var(--color-bg-secondary);
+  border-radius: 12rpx;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.building-item.selected {
+  border-color: var(--color-gold);
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.building-item.locked {
+  opacity: 0.5;
+}
+
+.building-icon {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.building-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 5rpx;
+}
+
+.building-count {
+  font-size: 24rpx;
+  color: var(--color-gold);
+  margin-bottom: 10rpx;
+}
+
+.building-cost {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rpx;
+}
+
+.cost-item {
+  font-size: 20rpx;
+  color: var(--color-text-secondary);
+  padding: 4rpx 8rpx;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4rpx;
+}
+
+.lock-tip {
+  font-size: 22rpx;
+  color: var(--color-accent-red);
+  margin-top: 10rpx;
+}
+
+/* 下一境界提示 */
+.next-realm-tip {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  padding: 20rpx;
+  background-color: var(--color-bg-secondary);
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.tip-icon {
+  font-size: 28rpx;
+}
+
+/* 建造按钮 */
+.build-btn {
+  position: fixed;
+  bottom: 40rpx;
+  left: 20rpx;
+  right: 20rpx;
+}

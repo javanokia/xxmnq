@@ -427,11 +427,9 @@ var Space = {
 		Space.drawStars();
 		Space._timer = setInterval(function() {
 			Space.altitude += 1;
-			// 修仙化：显示高度阶段叙事
+			// 修仙化：每秒更新标题 + 显示高度阶段叙事
+			Space.setTitle();
 			Space.showAltitudeNarrative();
-			if(Space.altitude % 10 === 0) {
-				Space.setTitle();
-			}
 			if(Space.altitude > 60) {
 				clearInterval(Space._timer);
 			}
@@ -513,7 +511,8 @@ var Space = {
 			body_color = '#272823';
 		else
 			body_color = '#FFFFFF';
-		// Craaaaash!
+		// Craaaaash! 延迟跳回，让渡劫失败文案先显示完
+		setTimeout(function() {
 		$('body').removeClass('noMask').stop().animate({
 			backgroundColor: body_color
 		}, {
@@ -531,7 +530,8 @@ var Space = {
 				$('#starsContainer').remove();
 				$('body').attr('style', '');
 				$('#notifyGradient').attr('style', '');	
-				$('#spacePanel').attr('style', '');			
+				$('#spacePanel').attr('style', '');
+				$('#endingNarrative').remove();
 			}
 		});
 		$('.menu, select.menuBtn').animate({color: '#666'}, 300, 'linear');
@@ -541,6 +541,7 @@ var Space = {
 		Button.cooldown($('#liftoffButton'));
 		Engine.event('progress', 'crash');
 		AudioEngine.playSound(AudioLibrary.CRASH);
+		}, 8000); // 等待失败文案显示完毕
 	},
 	
 	endGame: function() {
@@ -660,10 +661,11 @@ var Space = {
 				.addClass('outroContainer')
 				.appendTo('body');
 
+			// 修仙化：fleet beacon 结局文案
 			setTimeout(() => {
 				$('<div>')
 					.addClass('outro')
-					.html('the beacon pulses gently as the ship glides through space.<br>coordinates are locked. nothing to do but wait.')
+					.html('天舟在虚空中缓缓滑行。<br>信标在轻轻跳动。坐标已锁定。只需等待。')
 					.appendTo(c)
 					.animate({ opacity: 1}, 500);
 			}, 2000);
@@ -671,7 +673,7 @@ var Space = {
 			setTimeout(() => {
 				$('<div>')
 					.addClass('outro')
-					.html('the beacon glows a solid blue, and then goes dim. the ship slows.<br>gradually, the vast wanderer homefleet comes into view.<br>massive worldships drift unnaturally through clouds of debris, scarred and dead.')
+					.html('信标发出稳定的蓝光，然后熄灭。天舟减速。<br>庞大的游修舰队渐渐进入视野。<br>巨型世界舰在碎石云中漂移，伤痕累累，死寂无声。')
 					.appendTo(c)
 					.animate({ opacity: 1}, 500);
 			}, 7000);
@@ -679,7 +681,7 @@ var Space = {
 			setTimeout(() => {
 				$('<div>')
 					.addClass('outro')
-					.text('the air is running out.')
+					.text('灵力快耗尽了。')
 					.appendTo(c)
 					.animate({ opacity: 1}, 500);
 			}, 14000);
@@ -687,7 +689,7 @@ var Space = {
 			setTimeout(() => {
 				$('<div>')
 					.addClass('outro')
-					.text('the capsule is cold.')
+					.text('天舟舱内，寒意渗入。')
 					.appendTo(c)
 					.animate({ opacity: 1}, 500);
 			}, 17000);
@@ -712,41 +714,43 @@ var Space = {
 		$('<center>')
 			.addClass('centerCont')
 			.appendTo('body');
+		// 修仙化：得分显示
 		$('<span>')
 			.addClass('endGame')
-			.text(_('score for this game: {0}', Score.calculateScore()))
+			.text('此局修为：' + Score.calculateScore())
 			.appendTo('.centerCont')
 			.animate({opacity:1},1500);
 		$('<br />')
 			.appendTo('.centerCont');
 		$('<span>')
 			.addClass('endGame')
-			.text(_('total score: {0}', Prestige.get().score))
+			.text('累世修为：' + Prestige.get().score)
 			.appendTo('.centerCont')
 			.animate({opacity:1},1500);
 		$('<br />')
 			.appendTo('.centerCont');
 		$('<br />')
 			.appendTo('.centerCont');
+		// 修仙化：重开按钮
 		$('<span>')
 			.addClass('endGame endGameOption')
-			.text(_('restart.'))
+			.text('重入轮回。')
 			.click(Engine.confirmDelete)
 			.appendTo('.centerCont')
 			.animate({opacity:1},1500);
 		$('<br />')
 			.appendTo('.centerCont');
 		$('<br />')
-				.appendTo('.centerCont');
+			.appendTo('.centerCont');
 		$('<span>')
-				.addClass('endGame')
-				.text(_('expanded story. alternate ending. behind the scenes commentary. get the app.'))
-				.appendTo('.centerCont')
-				.animate({opacity:1}, 1500);
+			.addClass('endGame')
+			.text('扩展剧情 · 另类结局 · 幕后解说 · 获取应用。')
+			.appendTo('.centerCont')
+			.animate({opacity:1}, 1500);
 		$('<br />')
-				.appendTo('.centerCont');
+			.appendTo('.centerCont');
 		$('<br />')
-				.appendTo('.centerCont');
+			.appendTo('.centerCont');
 		$('<span>')
 			.addClass('endGame endGameOption')
 			.text(_('iOS.'))
@@ -754,13 +758,13 @@ var Space = {
 			.appendTo('.centerCont')
 			.animate({opacity:1},1500);
 		$('<br />')
-				.appendTo('.centerCont');
+			.appendTo('.centerCont');
 		$('<span>')
-				.addClass('endGame endGameOption')
-				.text(_('android.'))
-				.click(function() { window.open('https://play.google.com/store/apps/details?id=com.yourcompany.adarkroom'); })
-				.appendTo('.centerCont')
-				.animate({opacity:1},1500);
+			.addClass('endGame endGameOption')
+			.text(_('android.'))
+			.click(function() { window.open('https://play.google.com/store/apps/details?id=com.yourcompany.adarkroom'); })
+			.appendTo('.centerCont')
+			.animate({opacity:1},1500);
 	},
 	
 	keyDown: function(event) {

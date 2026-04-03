@@ -218,6 +218,19 @@
       AudioEngine.init();
       Notifications.init();
       Events.init();
+
+      // 《一介凡尘》新系统初始化
+      Buff.init();
+      Artifact.init();
+      Exploration.init();
+      Alchemy.init();
+      Cultivation.init();
+      Sect.init();
+      // 应用前世传承效果（轮回系统）
+      if (typeof Prestige !== 'undefined' && typeof Prestige.applyLegacyEffects === 'function') {
+        Prestige.applyLegacyEffects();
+      }
+
       Room.init();
 
 
